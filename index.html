@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Image to Spreadsheet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div id="message"></div>
+    <script>
+        if(!(window.File && window.FileReader && window.FileList && window.Blob)) {
+            document.getElementById('message').innerHTML = 'Ahh, a retro browser. No, that does not work.';
+        }
+    </script>
+
+    <input type="file" id="image-input" accept="image/*" onchange="loadImage(this.files[0])" />
+    
+    <button onclick="startConversion()">Convert</button>
+
+    <img id="image-display" src="" />
+</body>
+
+</html>
