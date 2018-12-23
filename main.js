@@ -28,7 +28,15 @@ function convert(image_data) {
     var rgb = [];
 
     var excel = $JExcel.new();
+
     excel.set(0, undefined, undefined, undefined, excel.addStyle({ border: 'none, none, none, none' }));
+
+    for(var i = 0; i < image.width; i++) {
+        excel.set(0, i, undefined, 3);
+    }
+    for(var i = 0; i < image.height * 3; i++) {
+        excel.set(0, undefined, i, 9);
+    }
     
     for(var i = 0; i < image.height; i++) {
         for(var j = 0; j < image.width; j++) {
@@ -37,7 +45,7 @@ function convert(image_data) {
             pixel_color = [ image_data.data[4*index], image_data.data[4*index + 1], image_data.data[4*index + 2], image_data.data[4*index + 3] ];
             rgb[index] = rgbaToRgb(pixel_color, [255, 255, 255]);
             
-            excel.set(0, j, i*3,'', excel.addStyle({ fill: '#' + $JExcel.rgbToHex(rgb[index][0], 0, 0) }));
+            excel.set(0, j, i*3, '', excel.addStyle({ fill: '#' + $JExcel.rgbToHex(rgb[index][0], 0, 0) }));
             excel.set(0, j, i*3 + 1, '', excel.addStyle({ fill: '#' + $JExcel.rgbToHex(0, rgb[index][1], 0) }));
             excel.set(0, j, i*3 + 2, '', excel.addStyle({ fill: '#' + $JExcel.rgbToHex(0, 0, rgb[index][2]) }));
         }
