@@ -49,7 +49,7 @@ function createExcel(image_data) {
 
     // Set cell width & height
     for(var i = 0; i < image.width; i++) {
-        excel.set(0, i, undefined, 3);
+        excel.set(0, i, undefined, 4);
     }
     for(var i = 0; i < image.height * 3; i++) {
         excel.set(0, undefined, i, 9);
